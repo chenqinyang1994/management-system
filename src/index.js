@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import 'normalize.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+console.log(`REACT_APP_ENV: ${process.env.REACT_APP_ENV}`)
 
 ReactDOM.render(
   <React.StrictMode>
