@@ -1,10 +1,8 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Button, DatePicker, version } from "antd";
+
+import "./App.less";
 
 export default function BasicExample() {
   return (
@@ -26,7 +24,11 @@ export default function BasicExample() {
 
         <Switch>
           <Route exact path="/">
-            <Home />
+            <h1>antd version: {version}</h1>
+            <DatePicker />
+            <Button type="primary" style={{ marginLeft: 8 }}>
+              Primary Button
+            </Button>
           </Route>
           <Route path="/about">
             <About />
@@ -42,8 +44,8 @@ export default function BasicExample() {
 
 function Home() {
   return (
-    <div>
-      <h2>Home</h2>
+    <div className="home-h2">
+      <h2>Home123</h2>
     </div>
   );
 }
