@@ -8,7 +8,7 @@ import "normalize.css";
 import "antd/dist/antd.css";
 import zhCN from "antd/lib/locale/zh_CN";
 
-import App from "@src/App.js";
+import App from "@pages/app";
 import reportWebVitals from "./reportWebVitals";
 
 dayjs.locale('zh-cn')

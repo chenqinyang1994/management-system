@@ -1,0 +1,55 @@
+.console-wrap {
+  width: 100vw;
+  height: 100vh;
+  .trigger {
+    padding: 0 24px;
+    font-size: 18px;
+    line-height: 64px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .trigger:hover {
+    color: #1890ff;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    margin: 16px;
+    background: rgb(63, 82, 99);
+    font-size: 22px;
+    line-height: 1;
+    &.collapsed {
+      background-color: inherit;
+    }
+    img {
+      width: 32px;
+      height: 32px;
+    }
+    span {
+      padding-right: 5px;
+      color: #fff;
+      font-weight: bolder;
+    }
+    i,
+    b {
+      padding-top: 6px;
+      font-family: fantasy;
+    }
+    i {
+      font-style: normal;
+      color: #e69f0f;
+    }
+    b {
+      font-weight: normal;
+      color: #64d5ea;
+    }
+  }
+
+  .site-layout .site-layout-background {
+    background: #fff;
+  }
+}
