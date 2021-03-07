@@ -5,6 +5,7 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 
 import Logo from "@assets/img/logo192.png";
 import Menu from "@components/menu";
+import PersonCenter from '../person-center';
 import "./index.less";
 
 const { Header, Sider, Content } = Layout;
@@ -45,7 +46,7 @@ class Console extends React.Component {
             <Menu />
           </Sider>
           <Layout className="site-layout">
-            <Header className="site-layout-background" style={{ padding: 0 }}>
+            <Header className="site-layout-header" style={{ padding: 0 }}>
               {React.createElement(
                 this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
                 {
@@ -53,6 +54,7 @@ class Console extends React.Component {
                   onClick: this.toggle,
                 }
               )}
+              <PersonCenter />
             </Header>
             <Content
               className="site-layout-background"

@@ -1,5 +1,6 @@
 import Login from "@pages/login";
 import Dashboard from "@pages/dashboard";
+import PersonInfo from "@pages/person-info";
 
 import ManagerAdd from "@pages/manager-manage/manager-add";
 import ManagerDelete from "@pages/manager-manage/manager-delete";
@@ -18,6 +19,10 @@ const routes = [
   {
     path: "/dashboard",
     component: Dashboard,
+  },
+  {
+    path: "/person-info",
+    component: PersonInfo,
   },
   {
     path: "/manager-manage/manager-add",
