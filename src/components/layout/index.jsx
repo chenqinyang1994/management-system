@@ -1,16 +1,10 @@
 import React from "react";
-import { Layout, Menu } from "antd";
-import { Link } from "react-router-dom";
+import { Layout } from "antd";
 import classNames from "classnames";
-import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-} from "@ant-design/icons";
+import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 
 import Logo from "@assets/img/logo192.png";
+import Menu from "@components/menu";
 import "./index.less";
 
 const { Header, Sider, Content } = Layout;
@@ -25,6 +19,10 @@ class Console extends React.Component {
       collapsed: !this.state.collapsed,
     });
   };
+
+  componentDidMount() {
+      console.log('layout render');
+  }
 
   render() {
     const { collapsed } = this.state;
@@ -44,17 +42,7 @@ class Console extends React.Component {
                 </>
               )}
             </div>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-              <Menu.Item key="1" icon={<UserOutlined />}>
-                <Link to="/console">nav 1</Link>
-              </Menu.Item>
-              <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-                <Link to="/">nav 2</Link>
-              </Menu.Item>
-              <Menu.Item key="3" icon={<UploadOutlined />}>
-                <Link to="/dashboard">nav 3</Link>
-              </Menu.Item>
-            </Menu>
+            <Menu />
           </Sider>
           <Layout className="site-layout">
             <Header className="site-layout-background" style={{ padding: 0 }}>
