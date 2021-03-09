@@ -1,47 +1,72 @@
+import {
+  BarChartOutlined,
+  UserOutlined,
+  UserAddOutlined,
+  UserDeleteOutlined,
+  UnorderedListOutlined,
+  MoneyCollectOutlined,
+  BookOutlined,
+  ShopOutlined,
+  ShoppingCartOutlined,
+  FunnelPlotOutlined,
+} from "@ant-design/icons";
+
+const layoutRoute = '/layout';
+
 const menuConfig = [
   {
     name: "数据看板",
-    path: "/dashboard",
+    path: `${layoutRoute}/dashboard`,
+    icon: <BarChartOutlined />,
   },
   {
     name: "管理员管理",
-    path: "/manager-manage",
+    path: `${layoutRoute}/manager-manage`,
+    icon: <UserOutlined />,
     children: [
       {
         name: "管理员添加",
-        path: "/manager-manage/manager-add",
+        path: `${layoutRoute}/manager-manage/manager-add`,
+        icon: <UserAddOutlined />,
       },
       {
         name: "管理员删除",
-        path: "/manager-manage/manager-delete",
+        path: `${layoutRoute}/manager-manage/manager-delete`,
+        icon: <UserDeleteOutlined />,
       },
     ],
   },
   {
     name: "订单管理",
-    path: "/order-manage",
+    path: `${layoutRoute}/order-manage`,
+    icon: <UnorderedListOutlined />,
     children: [
       {
         name: "商品价格",
-        path: "/order-manage/goods-price",
+        path: `${layoutRoute}/order-manage/goods-price`,
+        icon: <MoneyCollectOutlined />,
       },
       {
         name: "商品类型",
-        path: "/order-manage/goods-type",
+        path: `${layoutRoute}/order-manage/goods-type`,
+        icon: <BookOutlined />,
       },
     ],
   },
   {
     name: "库存管理",
-    path: "/stock-manage",
+    path: `${layoutRoute}/stock-manage`,
+    icon: <ShopOutlined />,
     children: [
       {
         name: "商品保质期",
-        path: "/stock-manage/goods-life",
+        path: `${layoutRoute}/stock-manage/goods-life`,
+        icon: <FunnelPlotOutlined />,
       },
       {
         name: "商品库存",
-        path: "/stock-manage/goods-stock",
+        path: `${layoutRoute}/stock-manage/goods-stock`,
+        icon: <ShoppingCartOutlined />,
       },
     ],
   },

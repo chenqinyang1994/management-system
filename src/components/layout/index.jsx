@@ -1,16 +1,18 @@
 import React from "react";
 import { Layout } from "antd";
 import classNames from "classnames";
+import { Switch } from "react-router-dom";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 
+import RouteWithSubRoutes from "@routes";
 import Logo from "@assets/img/logo192.png";
 import Menu from "@components/menu";
-import PersonCenter from '../person-center';
+import PersonCenter from "../person-center";
 import "./index.less";
 
 const { Header, Sider, Content } = Layout;
 
-class Console extends React.Component {
+class CustomLayout extends React.Component {
   state = {
     collapsed: false,
   };
@@ -21,15 +23,11 @@ class Console extends React.Component {
     });
   };
 
-  componentDidMount() {
-      console.log('layout render');
-  }
-
   render() {
     const { collapsed } = this.state;
-    const { children } = this.props;
+    const { routes } = this.props;
     return (
-      <div className="console-wrap">
+      <div className="layout-wrap">
         <Layout style={{ minHeight: "100vh" }}>
           <Sider trigger={null} collapsible collapsed={collapsed}>
             <div className={classNames("logo", { collapsed })}>
@@ -64,7 +62,11 @@ class Console extends React.Component {
                 minHeight: 280,
               }}
             >
-              {children}
+              <Switch>
+                {routes.map((route, i) => (
+                  <RouteWithSubRoutes key={i} {...route} />
+                ))}
+              </Switch>
             </Content>
           </Layout>
         </Layout>
@@ -73,4 +75,4 @@ class Console extends React.Component {
   }
 }
 
-export default Console;
+export default CustomLayout;

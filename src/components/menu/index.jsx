@@ -15,8 +15,18 @@ const MenuComponent = () => {
     setSelectedKey([path]);
   };
 
-  const onOpenKeyChange = (path) => {
-    setOpenKey(path instanceof Array ? path : [path]);
+  const onOpenKeyChange = ({ path, type = "subMenuClick" }) => {
+    let originOpenKey = [...openKey];
+    if (type === "subMenuClick") {
+      if (originOpenKey.find((ook) => ook === path)) {
+        originOpenKey = originOpenKey.filter((ook) => ook !== path);
+      } else {
+        originOpenKey.push(path);
+      }
+    } else {
+      originOpenKey = [path];
+    }
+    setOpenKey(originOpenKey);
   };
 
   //   const onMenuItemClick = ({ item, key, keyPath, domEvent }) => {
@@ -24,20 +34,25 @@ const MenuComponent = () => {
   //   };
 
   const onSubMenuClick = ({ key, domEvent }) => {
-    onOpenKeyChange(key);
+    onOpenKeyChange({ path: key, type: "subMenuClick" });
   };
 
   const onInitMenu = (config) => {
     const menuMap = config.map((mu) => {
       if (mu.children) {
         return (
-          <SubMenu key={mu.path} title={mu.name} onTitleClick={onSubMenuClick}>
+          <SubMenu
+            key={mu.path}
+            title={mu.name}
+            onTitleClick={onSubMenuClick}
+            icon={mu.icon}
+          >
             {onInitMenu(mu.children)}
           </SubMenu>
         );
       } else {
         return (
-          <Item key={mu.path}>
+          <Item key={mu.path} icon={mu.icon}>
             <Link to={mu.path}>{mu.name}</Link>
           </Item>
         );
@@ -46,18 +61,18 @@ const MenuComponent = () => {
     return menuMap;
   };
 
-  const getOpenKeys = (pathname) => {
-    let openKeys = pathname.split("/");
-    openKeys.pop();
-    return openKeys.map((oKey) => `/${oKey}`);
+  const getPathnameStr = (pathname) => {
+    const lastIndex = pathname.lastIndexOf("/");
+    return pathname.slice(0, lastIndex);
   };
 
   useEffect(() => {
     onSelectedKeyChange(location.pathname);
-    onOpenKeyChange(getOpenKeys(location.pathname));
+    onOpenKeyChange({
+      path: getPathnameStr(location.pathname),
+      type: "location",
+    });
   }, [location]);
-
-  console.log('menu render');
 
   return (
     <Menu

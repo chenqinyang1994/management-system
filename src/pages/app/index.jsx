@@ -7,9 +7,12 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import routes from "@routes";
+import RouteWithSubRoutes from "@routes";
+import routesModule from "@routes/modules";
 
 import "./index.less";
+
+const isLogin = true;
 
 export default function App() {
   return (
@@ -17,16 +20,12 @@ export default function App() {
       <Router>
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
-            <Route exact={true} path='/'>
-              <Redirect to="/dashboard" />
+            <Route exact={true} path="/">
+              <Redirect to={isLogin ? "/layout/dashboard" : "/login"} />
             </Route>
-            {routes.map((route, i) => {
-              return (
-                <Route key={i} exact={!!route.exact} path={route.path}>
-                  <route.component />
-                </Route>
-              );
-            })}
+            {routesModule.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route} />
+            ))}
             <Route path="*">
               <NoMatch />
             </Route>

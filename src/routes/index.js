@@ -1,53 +1,14 @@
-import Login from "@pages/login";
-import Dashboard from "@pages/dashboard";
-import PersonInfo from "@pages/person-info";
+import React from "react";
+import { Route } from "react-router-dom";
 
-import ManagerAdd from "@pages/manager-manage/manager-add";
-import ManagerDelete from "@pages/manager-manage/manager-delete";
-
-import GoodsPrice from "@pages/order-manage/goods-price";
-import GoodsType from "@pages/order-manage/goods-type";
-
-import GoodsLife from "@pages/stock-manage/goods-life";
-import GoodsStock from "@pages/stock-manage/goods-stock";
-
-const routes = [
-  {
-    path: "/login",
-    component: Login,
-  },
-  {
-    path: "/dashboard",
-    component: Dashboard,
-  },
-  {
-    path: "/person-info",
-    component: PersonInfo,
-  },
-  {
-    path: "/manager-manage/manager-add",
-    component: ManagerAdd,
-  },
-  {
-    path: "/manager-manage/manager-delete",
-    component: ManagerDelete,
-  },
-  {
-    path: "/order-manage/goods-price",
-    component: GoodsPrice,
-  },
-  {
-    path: "/order-manage/goods-type",
-    component: GoodsType,
-  },
-  {
-    path: "/stock-manage/goods-life",
-    component: GoodsLife,
-  },
-  {
-    path: "/stock-manage/goods-stock",
-    component: GoodsStock,
-  },
-];
-
-export default routes;
+export default function RouteWithSubRoutes(route) {
+  return (
+    <Route
+      path={route.path}
+      render={(props) => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes} />
+      )}
+    />
+  );
+}
