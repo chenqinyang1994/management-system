@@ -1,0 +1,66 @@
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, #4d71f0, #0129c6);
+  background-color: #4d71f0;
+
+  .login-wrapper {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    width: 400px;
+    height: 100%;
+    margin: 0 auto;
+    .center {
+      width: 100%;
+      .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 64px;
+        line-height: 1;
+        span {
+          padding-right: 12px;
+          color: #fff;
+          font-weight: bolder;
+        }
+        i,
+        b {
+          padding-top: 22px;
+          font-family: fantasy;
+        }
+        i {
+          font-style: normal;
+          color: #e69f0f;
+        }
+        b {
+          font-weight: normal;
+          color: #64d5ea;
+        }
+      }
+      .slogan {
+        font-size: 16px;
+        font-family: PingFangSC-Medium;
+        text-align: center;
+        color: #fff;
+      }
+      .login-form {
+        margin-top: 30px;
+        background: #ffffff;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        padding: 40px;
+        .login-form-title {
+          height: 20px;
+          line-height: 20px;
+          font-size: 20px;
+          font-family: PingFangSC-Semibold, PingFang SC;
+          font-weight: 600;
+          color: #1f2329;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
