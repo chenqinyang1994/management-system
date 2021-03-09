@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 import PhoneLoginBind from "@components/phone-login-bind";
+import Helmet from "@components/helmet";
 
 import "./index.less";
 
@@ -15,6 +16,7 @@ function Login() {
 
   return (
     <div className="login-page">
+      <Helmet title="LIKEJS - 登录" />
       <div className="login-wrapper">
         <div className="center">
           <div className="logo">
