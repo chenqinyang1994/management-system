@@ -28,10 +28,6 @@ module.exports = override(
 
   // add an alias for "ag-grid-react" imports
   addWebpackAlias({
-    "@src": path.resolve(__dirname, "src"),
-    "@pages": path.resolve(__dirname, "src/pages"),
-    "@assets": path.resolve(__dirname, "src/assets"),
-    "@routes": path.resolve(__dirname, "src/routes"),
-    "@components": path.resolve(__dirname, "src/components"),
+    "@": path.resolve(__dirname, "src"),
   })
 );

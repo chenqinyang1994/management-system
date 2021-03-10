@@ -1,17 +1,17 @@
-import Layout from "@components/layout";
+import Layout from "@/components/layout";
 
-import Login from "@pages/login";
-import Dashboard from "@pages/dashboard";
-import PersonInfo from "@pages/person-info";
+import Login from "@/pages/login";
+import Dashboard from "@/pages/dashboard";
+import PersonInfo from "@/pages/person-info";
 
-import ManagerAdd from "@pages/manager-manage/manager-add";
-import ManagerDelete from "@pages/manager-manage/manager-delete";
+import ManagerAdd from "@/pages/manager-manage/manager-add";
+import ManagerDelete from "@/pages/manager-manage/manager-delete";
 
-import GoodsPrice from "@pages/order-manage/goods-price";
-import GoodsType from "@pages/order-manage/goods-type";
+import GoodsPrice from "@/pages/order-manage/goods-price";
+import GoodsType from "@/pages/order-manage/goods-type";
 
-import GoodsLife from "@pages/stock-manage/goods-life";
-import GoodsStock from "@pages/stock-manage/goods-stock";
+import GoodsLife from "@/pages/stock-manage/goods-life";
+import GoodsStock from "@/pages/stock-manage/goods-stock";
 
 const routesModule = [
   {

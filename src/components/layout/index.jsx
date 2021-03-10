@@ -4,9 +4,9 @@ import classNames from "classnames";
 import { Switch } from "react-router-dom";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 
-import RouteWithSubRoutes from "@routes";
-import Logo from "@assets/img/logo192.png";
-import Menu from "@components/menu";
+import RouteWithSubRoutes from "@/routes";
+import Logo from "@/assets/img/logo192.png";
+import Menu from "@/components/menu";
 import PersonCenter from "../person-center";
 import "./index.less";
 

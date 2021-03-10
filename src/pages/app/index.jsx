@@ -7,8 +7,8 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import RouteWithSubRoutes from "@routes";
-import routesModule from "@routes/modules";
+import RouteWithSubRoutes from "@/routes";
+import routesModule from "@/routes/modules";
 
 import "./index.less";
 
