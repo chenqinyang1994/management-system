@@ -25,7 +25,7 @@ function Login() {
           </div>
           <div className="slogan">LIKEJS 开放平台</div>
           <div className="login-form">
-            <div className="login-form-title">登录</div>
+            <div className="login-form-title">登 录</div>
             <PhoneLoginBind onSuccess={handleSuccess} />
           </div>
         </div>
