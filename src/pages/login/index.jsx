@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import PhoneLoginBind from "@/components/phone-login-bind";
 import Helmet from "@/components/helmet";
+import authService from '@/utils/authService';
 
 import "./index.less";
 
