@@ -3,15 +3,18 @@ import { useHistory } from "react-router-dom";
 
 import PhoneLoginBind from "@/components/phone-login-bind";
 import Helmet from "@/components/helmet";
-import authService from '@/utils/authService';
+import authService from "@/utils/authService";
+import { login } from "@/services/login";
 
 import "./index.less";
 
 function Login() {
   let history = useHistory();
   const handleSuccess = (values) => {
-    console.log("values", values);
-    history.push("/layout/dashboard");
+    login(values).then((res) => {
+      authService.set(res.data.token);
+      history.push("/layout/dashboard");
+    });
   };
 
   return (

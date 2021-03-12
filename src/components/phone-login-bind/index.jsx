@@ -25,7 +25,7 @@ const PhoneLoginBind = ({ onSuccess }) => {
             >
                 <Input placeholder="请输入手机号" />
             </Form.Item>
-            <Form.Item name="code" rules={[{ required: true, message: '请输入密码' }]}>
+            <Form.Item name="password" rules={[{ required: true, message: '请输入密码' }]}>
                 <Input placeholder="请输入密码" />
             </Form.Item>
             <Form.Item>
