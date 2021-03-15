@@ -11,11 +11,12 @@ import "./index.less";
 function Login() {
   let history = useHistory();
   const handleSuccess = (values) => {
-    login(values).then((res) => {
-      authService.set(res.data.token);
-      history.push("/layout/dashboard");
-    });
-  };
+    // login(values).then((res) => {
+    //   authService.set(res.data.token);
+    //   history.push("/layout/dashboard");
+    // });
+    history.push("/layout/dashboard");
+};
 
   return (
     <div className="login-page">

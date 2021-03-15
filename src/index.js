@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ConfigProvider } from "antd";
+import { Provider } from "react-redux";
 import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
 
@@ -9,6 +10,7 @@ import "antd/dist/antd.css";
 import zhCN from "antd/lib/locale/zh_CN";
 
 import App from "@/pages/app";
+import store from "@/app/store";
 import reportWebVitals from "./reportWebVitals";
 
 dayjs.locale("zh-cn");
@@ -19,7 +21,9 @@ console.log(`REACT_APP_ENV: ${process.env.NODE_ENV}`);
 ReactDOM.render(
   <React.StrictMode>
     <ConfigProvider locale={zhCN}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ConfigProvider>
   </React.StrictMode>,
   document.getElementById("root")
