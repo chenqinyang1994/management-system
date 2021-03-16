@@ -1,8 +1,10 @@
 import React from "react";
 
+import './index.less';
+
 class GoodsType extends React.Component {
   render() {
-    return <div>{"商品类别"}</div>;
+    return <div className='goods-type'>{"商品类别"}</div>;
   }
 }
 

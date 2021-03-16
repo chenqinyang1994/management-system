@@ -77,7 +77,7 @@ const MenuComponent = (props) => {
     <Menu
       selectedKeys={selectedKey}
       mode="inline"
-      theme="dark"
+      theme={props.theme || 'dark'}
       {...openKeysProps}
     >
       {onInitMenu(menuConfig)}

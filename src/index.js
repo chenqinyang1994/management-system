@@ -12,6 +12,7 @@ import zhCN from "antd/lib/locale/zh_CN";
 import App from "@/pages/app";
 import store from "@/app/store";
 import reportWebVitals from "./reportWebVitals";
+import '@/assets/css/style.less';
 
 dayjs.locale("zh-cn");
 
