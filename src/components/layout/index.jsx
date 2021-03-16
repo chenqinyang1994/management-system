@@ -41,7 +41,7 @@ class CustomLayout extends React.Component {
                 </>
               )}
             </div>
-            <Menu />
+            <Menu collapsed={this.state.collapsed} />
           </Sider>
           <Layout className="site-layout">
             <Header className="site-layout-header" style={{ padding: 0 }}>

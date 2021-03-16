@@ -6,7 +6,7 @@ import menuConfig from "./config";
 
 const { SubMenu, Item } = Menu;
 
-const MenuComponent = () => {
+const MenuComponent = (props) => {
   let location = useLocation();
   const [selectedKey, setSelectedKey] = useState([""]);
   const [openKey, setOpenKey] = useState([""]);
@@ -28,10 +28,6 @@ const MenuComponent = () => {
     }
     setOpenKey(originOpenKey);
   };
-
-  //   const onMenuItemClick = ({ item, key, keyPath, domEvent }) => {
-  //     onSelectedKeyChange(key);
-  //   };
 
   const onSubMenuClick = ({ key, domEvent }) => {
     onOpenKeyChange({ path: key, type: "subMenuClick" });
@@ -72,15 +68,17 @@ const MenuComponent = () => {
       path: getPathnameStr(location.pathname),
       type: "location",
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
+
+  let openKeysProps = !props.collapsed ? { openKeys: openKey } : {};
 
   return (
     <Menu
       selectedKeys={selectedKey}
-      openKeys={openKey}
       mode="inline"
       theme="dark"
-      //   onClick={onMenuItemClick}
+      {...openKeysProps}
     >
       {onInitMenu(menuConfig)}
     </Menu>
