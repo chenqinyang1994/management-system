@@ -23,11 +23,7 @@ function Login() {
       <Helmet title="LIKEJS - 登录" />
       <div className="login-wrapper">
         <div className="center">
-          <div className="logo">
-            <span>LIKE</span>
-            <i>J</i>
-            <b>S</b>
-          </div>
+          <div className="logo" />
           <div className="slogan">LIKEJS 开放平台</div>
           <div className="login-form">
             <div className="login-form-title">登 录</div>

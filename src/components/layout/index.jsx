@@ -7,6 +7,7 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 
 import RouteWithSubRoutes from "@/routes";
 import Logo from "@/assets/img/logo192.png";
+import LogoText from "@/assets/img/logo_text.png";
 import Menu from "@/components/menu";
 import PersonCenter from "../person-center";
 import ThemeToggle from "../theme-toggle";
@@ -38,11 +39,7 @@ const CustomLayout = (props) => {
             {collapsed ? (
               <img src={Logo} alt="LOGO" />
             ) : (
-              <>
-                <span>LIKE</span>
-                <i>J</i>
-                <b>S</b>
-              </>
+              <img src={LogoText} alt="Logo" className='logo-text' />
             )}
           </div>
           <Menu collapsed={collapsed} theme={themeValue} />
