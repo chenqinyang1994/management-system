@@ -9,7 +9,7 @@ function PersonCenter(props) {
   const menu = (
     <Menu>
       <Item>
-        <Link to="/person-info">个人中心</Link>
+        <Link to="/layout/person-info">个人中心</Link>
       </Item>
       <Item>
         <Link to="/login">退出</Link>
