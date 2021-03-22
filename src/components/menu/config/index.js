@@ -59,7 +59,7 @@ const menuConfig = [
     icon: <ShopOutlined />,
     children: [
       {
-        name: "商品保质期",
+        name: "商品描述",
         path: `${layoutRoute}/stock-manage/goods-life`,
         icon: <FunnelPlotOutlined />,
       },

@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Input, Menu, Dropdown } from "antd";
+import { Input, Menu, Dropdown, Button } from "antd";
+import { users } from "./config";
+
+import "./index.less";
 
 const TextArea = Input.TextArea;
 
@@ -16,60 +19,99 @@ const GoodsLife = () => {
     }
   }, [textareaRef]);
 
-  const handleClick = () => {
-    textAreaNode.focus();
-    textAreaNode.setSelectionRange(2, 2);
+  const getTargetNode = () => {
     const selectionStart = textAreaNode.selectionStart;
     const selectionEnd = textAreaNode.selectionEnd;
     const leftText = value.slice(0, selectionStart);
     const rightText = value.slice(selectionEnd);
     const selectedText = value.slice(selectionStart, selectionEnd);
+    return {
+      selectionStart,
+      selectionEnd,
+      leftText,
+      rightText,
+      selectedText,
+      textAreaNode,
+    };
+  };
+
+  const handleClick = () => {
+    const {
+      selectionStart,
+      selectionEnd,
+      leftText,
+      rightText,
+      selectedText,
+      textAreaNode,
+    } = getTargetNode();
+    textAreaNode.focus();
+    textAreaNode.setSelectionRange(2, 2);
     console.log("leftText", leftText);
     console.log("rightText", rightText);
     console.log("selectedText", selectedText);
   };
 
   const handleVisibleChange = (flag = false, str) => {
-    console.log("handleVisibleChange", flag);
+    const {
+      selectionStart,
+      selectionEnd,
+      leftText,
+      rightText,
+      selectedText,
+      textAreaNode,
+    } = getTargetNode();
     setVisible(flag);
-    typeof str === "string" && setValue(value + str);
+    if (typeof str === "string") {
+      setValue(
+        `${leftText.slice(0, leftText.length - 1)}【@${str}】${rightText}`
+      );
+    }
   };
 
   const handleInput = (e) => {
     const val = e.target.value;
     setValue(val);
-    if (val.slice(val.length - 1) === "@") {
+  };
+
+  const handleSelect = (e) => {
+    const {
+      selectionStart,
+      selectionEnd,
+      leftText,
+      rightText,
+      selectedText,
+      textAreaNode,
+    } = getTargetNode();
+    console.log("selectionStart", selectionStart);
+    if (leftText.slice(leftText.length - 1) === "@") {
       handleVisibleChange(true);
     } else {
       handleVisibleChange();
     }
   };
 
-  const handleSelect = (e) => {
-    console.log("====================================");
-    console.log(e);
-    console.log("====================================");
+  const handleSubmit = () => {
+    alert(value);
   };
 
   const menu = (
-    <Menu
-      onClick={() => handleVisibleChange(false, "666")}
-      style={{ width: "30%" }}
-    >
-      <Menu.Item key="0">
-        <a href="https://www.antgroup.com">1st menu item</a>
-      </Menu.Item>
-      <Menu.Item key="1">
-        <a href="https://www.aliyun.com">2nd menu item</a>
-      </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item key="3">3rd menu item</Menu.Item>
+    <Menu style={{ width: "30%" }}>
+      {users.map((u) => (
+        <Menu.Item
+          key={u.id}
+          onClick={() => handleVisibleChange(false, u.name)}
+        >
+          {u.name}
+        </Menu.Item>
+      ))}
     </Menu>
   );
 
   return (
     <div>
-      <header onClick={handleClick}>商品保质期</header>
+      <header onClick={handleClick} className="at-title">
+        TextArea的“@”功能
+      </header>
       <Dropdown
         overlay={menu}
         visible={visible}
@@ -78,12 +120,19 @@ const GoodsLife = () => {
         trigger={[]}
       >
         <TextArea
+          className="at-textarea"
           ref={textareaRef}
           onChange={handleInput}
           value={value}
           onSelect={handleSelect}
+          placeholder="请输入评论……"
         />
       </Dropdown>
+      <div className="at-submit">
+        <Button type="primary" onClick={handleSubmit}>
+          提交
+        </Button>
+      </div>
     </div>
   );
 };
