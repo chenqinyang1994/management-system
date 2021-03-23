@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import ContentEditable from "react-contenteditable";
 import { Menu, Dropdown, message, Button } from "antd";
+import dayjs from "dayjs";
 import { users, getDifferentCode, getUserId } from "./config";
 
 import "./index.less";
@@ -43,7 +44,7 @@ const GoodsStock = () => {
 
   const handleSubmit = () => {
     comment.push({
-      date: new Date().toLocaleString(),
+      date: dayjs(new Date()).format("YYYY.M.D HH:mm:ss"),
       value: text,
     });
     setComment(comment);
@@ -87,7 +88,11 @@ const GoodsStock = () => {
         {comment.map((c) => (
           <div className="stock-comment-item" key={c.date}>
             <time>{c.date}</time>
-            <ContentEditable className='stock-comment-item-value' html={c.value} disabled={true} />
+            <ContentEditable
+              className="stock-comment-item-value"
+              html={c.value}
+              disabled={true}
+            />
           </div>
         ))}
       </div>
