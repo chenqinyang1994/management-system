@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import ContentEditable from "react-contenteditable";
 import { Menu, Dropdown, message, Button } from "antd";
 import dayjs from "dayjs";
+import recognitLink from "@/utils/recognitLink";
 import { users, getDifferentCode, getUserId } from "./config";
 
 import "./index.less";
@@ -22,7 +23,7 @@ const GoodsStock = () => {
         setText(strValue);
         return;
       }
-      const atStr = `<span class="stock-at" contenteditable="false" data-id="${user.id}">@${user.name}</span>`;
+      const atStr = ` <span class="stock-at" contenteditable="false" data-id="${user.id}">@${user.name}</span>`;
       const strValue = text.slice(0, index) + atStr + text.slice(index + 1);
       setText(strValue);
     }
@@ -49,6 +50,18 @@ const GoodsStock = () => {
     });
     setComment(comment);
     setText("");
+  };
+
+  const getTarget = (val) => {
+    const arr = recognitLink(val).map((item) => {
+      if (typeof item === "object") {
+        return `<a href="${
+          /^(http|ftp|https)/.test(item.link) ? item.link : `//${item.link}`
+        }" target="blank">${item.link}</a>`;
+      }
+      return item;
+    });
+    return arr.reduce((next, current) => next + current);
   };
 
   const menu = (
@@ -90,7 +103,7 @@ const GoodsStock = () => {
             <time>{c.date}</time>
             <ContentEditable
               className="stock-comment-item-value"
-              html={c.value}
+              html={getTarget(c.value)}
               disabled={true}
             />
           </div>
