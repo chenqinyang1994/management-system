@@ -16,7 +16,8 @@ function Login() {
     //   history.push("/layout/dashboard");
     // });
     history.push("/layout/dashboard");
-};
+  };
+  const year = new Date().getFullYear();
 
   return (
     <div className="login-page">
@@ -30,6 +31,17 @@ function Login() {
             <PhoneLoginBind onSuccess={handleSuccess} />
           </div>
         </div>
+        <footer>
+          <span>LIKEJS© {year || 2021}</span>
+          <span> | </span>
+          <a
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            京ICP备20000487号-1
+          </a>
+        </footer>
       </div>
     </div>
   );
